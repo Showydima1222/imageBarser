@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ImageBarser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0eb30fbc86fd02d2a798ed8a00278d2e6a004e5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4c29ed1bf7880f26d9bf26a509f549c1f069334")]
 [assembly: System.Reflection.AssemblyProductAttribute("ImageBarser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ImageBarser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
