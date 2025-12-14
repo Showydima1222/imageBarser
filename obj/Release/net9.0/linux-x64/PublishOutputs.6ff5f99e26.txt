@@ -1,0 +1,2 @@
+/Users/showydima/Documents/C#/ImageBarser/dist/linux-x64/ImageBarser.pdb
+/Users/showydima/Documents/C#/ImageBarser/dist/linux-x64/ImageBarser

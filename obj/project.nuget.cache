@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "tULYhBia+8U=",
+  "dgSpecHash": "ouQXN3tXWyQ=",
   "success": true,
   "projectFilePath": "/Users/showydima/Documents/C#/ImageBarser/ImageBarser.csproj",
   "expectedPackageFiles": [
-    "/Users/showydima/.nuget/packages/sixlabors.imagesharp/3.1.12/sixlabors.imagesharp.3.1.12.nupkg.sha512"
+    "/Users/showydima/.nuget/packages/microsoft.net.illink.tasks/9.0.10/microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
+    "/Users/showydima/.nuget/packages/sixlabors.imagesharp/3.1.12/sixlabors.imagesharp.3.1.12.nupkg.sha512",
+    "/Users/showydima/.nuget/packages/microsoft.netcore.app.runtime.win-x64/9.0.10/microsoft.netcore.app.runtime.win-x64.9.0.10.nupkg.sha512",
+    "/Users/showydima/.nuget/packages/microsoft.aspnetcore.app.runtime.win-x64/9.0.10/microsoft.aspnetcore.app.runtime.win-x64.9.0.10.nupkg.sha512",
+    "/Users/showydima/.nuget/packages/microsoft.netcore.app.host.win-x64/9.0.10/microsoft.netcore.app.host.win-x64.9.0.10.nupkg.sha512"
   ],
   "logs": []
 }

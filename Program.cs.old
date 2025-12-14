@@ -1,0 +1,102 @@
+﻿
+using System.IO;
+using System.Diagnostics;
+
+if (args.Length < 2)
+{
+    if (args.Length == 1)
+    {
+        if (args[0] == "install")
+        {
+            string targetPath = "/usr/local/bin/imagebarser";
+            string selfPath = Environment.ProcessPath!;
+            if (File.Exists(targetPath))
+            {
+                Console.WriteLine("Already installed.");
+                return;
+            }
+
+            File.Copy(selfPath, targetPath);
+
+        }
+    }
+    Console.WriteLine("Usage: imagebarser <input> <output>\n\notpional:\n-t <value> Transparency (by default = 2, maybe 1 and more)\n-h Horizontal Basring\n\nAlternative usage:\nsudo imagebarser install/uninstall — (un-)installs imagebars for using without absolute path.");
+
+} else
+{
+    string inputPath = args[0];
+    string outputPath = args[1];
+    int transp = 2;
+    bool isLinesVertical = true;
+
+    if (!File.Exists(inputPath))
+    {
+        Console.WriteLine("Input file isn't exists");
+        Environment.Exit(1);
+    } else {
+        string? dir = Path.GetDirectoryName(outputPath);
+        if (dir == null || !Directory.Exists(dir))
+        {
+            Console.WriteLine("Output path invalid");
+            Environment.Exit(1);
+        } else
+        {
+            // Args parser
+            for (int i = 0; i < args.Length; i++)
+                {
+                    if (args[i] == "-t" && i + 1 < args.Length)
+                    {
+                        string transpRaw = args[i+1];
+                        if (!int.TryParse(transpRaw, out transp))
+                        {
+                            Console.WriteLine("-t Argument must be nubmer.");
+                            Environment.Exit(1);
+                        } else
+                    {
+                        if (transp < 0) {transp = 2; Console.WriteLine("-t Argument was reset to 2 to avoid errors.");}
+                    }
+                        i += 1;
+                    }
+                    if (isLinesVertical && args[i] == "-h") {isLinesVertical = false;}
+                }
+            // Main program here
+
+            int pixelsComputed = 0;
+
+            var sw = Stopwatch.StartNew();
+            using (Image<Rgba32> original = Image.Load<Rgba32>(inputPath))
+            {
+                Image<Rgba32> image = new (original.Size.Width, original.Size.Height);
+                int a,b;
+                if (isLinesVertical){
+                    a = original.Size.Width;
+                    b = original.Size.Height;
+                } else {
+                    a = original.Size.Height;
+                    b = original.Size.Width;
+                }
+                for (int LineIndex = 0; LineIndex < a; LineIndex++)
+                {
+                    for (int pixel = 0; pixel < b; pixel++)
+                    {
+                        if (isLinesVertical){
+                            if (LineIndex % transp == 0) { image[LineIndex, pixel] = Color.Transparent; } 
+                            else { image[LineIndex, pixel] = original[LineIndex, pixel]; }
+                        } else
+                        {
+                            if (LineIndex % transp == 0) { image[pixel, LineIndex] = Color.Transparent; } 
+                            else { image[pixel, LineIndex] = original[pixel, LineIndex]; }
+                        }
+                        pixelsComputed++;
+                    }
+                }
+                sw.Stop();
+                image.Save(outputPath);
+                double mpPerSecond = (pixelsComputed / 1_000_000.0) / sw.Elapsed.TotalSeconds;
+
+                Console.WriteLine($"Executed in {sw.ElapsedMilliseconds}ms, computing speed {mpPerSecond:F2}MP/s");
+            }
+        }
+    }
+
+}

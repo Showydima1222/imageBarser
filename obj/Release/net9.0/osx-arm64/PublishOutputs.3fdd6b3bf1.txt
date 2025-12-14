@@ -1,0 +1,2 @@
+/Users/showydima/Documents/C#/ImageBarser/bin/Release/net9.0/osx-arm64/publish/ImageBarser.pdb
+/Users/showydima/Documents/C#/ImageBarser/bin/Release/net9.0/osx-arm64/publish/ImageBarser
